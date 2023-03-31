@@ -18,7 +18,7 @@
         </ControlTemplate>
     </Page.Resources>
     <Grid>
-        <Label Content="Введите логин:" Width="300" Height="30" Margin="300,120,300,300" 
+        <Label Name="label1" Content="Введите логин:" Width="300" Height="30" Margin="300,120,300,300" 
                HorizontalAlignment="Center" 
                VerticalAlignment="Center"/>
         <TextBox x:Name="box_login" BorderBrush="Black" Width="300" Height="40" Margin="300,150,300,270" 
@@ -46,7 +46,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Label Content="Введите пароль:" Width="300" Height="30" Margin="300,200,300,240" 
+        <Label Name="label2" Content="Введите пароль:" Width="300" Height="30" Margin="300,200,300,240" 
                HorizontalAlignment="Center" 
                VerticalAlignment="Center"/>
         <PasswordBox  Template="{StaticResource box_Password}" x:Name="box_Password"

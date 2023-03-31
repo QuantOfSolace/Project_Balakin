@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Project_Balakin
 {
@@ -23,6 +24,25 @@ namespace Project_Balakin
         public Registration()
         {
             InitializeComponent();
+
+            BrushConverter converter = new BrushConverter();
+            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                
+            if (GlobalVar.ThemeChanged == true)
+                { 
+                label1.Foreground = (Brush)converter.ConvertFromString("White");
+                label2.Foreground = (Brush)converter.ConvertFromString("White");
+                label3.Foreground = (Brush)converter.ConvertFromString("White");
+                }
+
+            if (GlobalVar.ThemeChanged == false)
+                {
+                label1.Foreground = (Brush)converter.ConvertFromString("Black");
+                label2.Foreground = (Brush)converter.ConvertFromString("Black");
+                label3.Foreground = (Brush)converter.ConvertFromString("Black");
+                }
+            }, Dispatcher);
         }
         private void Check_click(object sender, RoutedEventArgs e)
         {

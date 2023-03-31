@@ -74,6 +74,18 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Background="Orange">
+            <Button Name="ChangeTheme" Click="ChangeTheme_Click" Width="300px" Height="50px" VerticalAlignment="Center"  
+                    HorizontalAlignment="Right" Margin="0,0,50,0" 
+                    Content="Cменить тему"
+                    FontSize="22">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+                
+
             <Image Margin="20,0,0,0"  Name="UserPanel" VerticalAlignment="Center" HorizontalAlignment="Left" 
                    Height="100" Width="100" GotFocus="UserPanel_GotFocus" LostFocus="UserPanel_LostFocus">
                 <Image.Style>

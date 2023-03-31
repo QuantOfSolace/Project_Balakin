@@ -17,6 +17,11 @@ using System.Windows.Threading;
 
 namespace Project_Balakin
 {
+    public class GlobalVar
+    {
+        public static bool ThemeChanged = false;
+        public static bool isAction1 = true;
+    }
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
@@ -57,5 +62,24 @@ namespace Project_Balakin
         {
 
         }
+
+        private void ChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            BrushConverter converter = new BrushConverter();
+
+            if (GlobalVar.isAction1)
+            {
+                Frame.Background = (Brush)converter.ConvertFromString("#FF1F1F1F");
+                GlobalVar.ThemeChanged = true;
+            }
+            else
+            {
+                Frame.Background = (Brush)converter.ConvertFromString("White");
+                GlobalVar.ThemeChanged = false;
+            }
+            GlobalVar.isAction1 = !GlobalVar.isAction1;  
+           
+        }
+
     }
 }
