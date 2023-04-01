@@ -87,6 +87,9 @@ namespace Project_Balakin
                                         }
                                         else
                                         {
+                                            //var user = new users { login = login, password = password };
+                                            //DataBase.users.Add(user);                                         ENTITY IS SHIT, DONT WORK
+                                            //DataBase.SaveChanges();
                                             DataBase.InsertUser(login, password);
                                             MessageBox.Show("Пользователь зарегистрирован");
                                             ClassChangePage.frame1.Navigate(new Login());

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,24 +46,35 @@ namespace Project_Balakin
         {
             if (box_login.Text.Length > 0)
             {
-                if (box_Password.Password.Length > 0)
+                if (box_password.Password.Length > 0)
                 {
-                    /*Burachenock_BaraguzinEntities db = new Burachenock_BaraguzinEntities();
-                    admins user1 = db.admins.FirstOrDefault(w => w.login.Equals(box_login.Text));
-                    if (user1.password.Equals(box_Password))
+                    using (var DataBase = new DataBaseEntities())
                     {
-                        MessageBox.Show("Админ авторизовался");
-                        ClassFrame1.frame1.Navigate(new MainPage());
-                    }
+                        string login = box_login.Text;
+                        string password = box_password.Password;
 
-                    users user2 = db.users.FirstOrDefault(w => w.login.Equals(box_login.Text));
-                    if (user2.password.Equals(box_Password))
-                    {
-                    / FIXME /
-                    MessageBox.Show("Пользователь авторизовался");
-                    */
-                        ClassChangePage.frame1.Navigate(new Main());
-                    
+                        var isUserExistsLoginAdm = DataBase.admins.Any(u => u.login == login);
+                        var isUserExistsPassAdm = DataBase.admins.Any(u => u.password == password);
+                        var isUserExistsLogin = DataBase.users.Any(u => u.login == login);
+                        var isUserExistsPass = DataBase.users.Any(u => u.password == password);
+                        if(isUserExistsLoginAdm && isUserExistsPassAdm)
+                        {
+                            MessageBox.Show("Админ авторизовался");
+                            ClassChangePage.frame1.Navigate(new Main());
+                        }
+                        else
+                        { 
+                            if (isUserExistsLogin && isUserExistsPass)
+                            {
+                                MessageBox.Show("Пользователь авторизовался");
+                                ClassChangePage.frame1.Navigate(new Main());
+                            }
+                            else
+                            {
+                                MessageBox.Show("Неверный логин или пароль");
+                            }
+                        }
+                    }
                 }
                 else MessageBox.Show("Введите пароль");
             }
@@ -76,7 +88,7 @@ namespace Project_Balakin
 
         private void OnPasswordChanged(object sender, RoutedEventArgs e)
         {
-            if(box_Password.Password.Length > 0) 
+            if(box_password.Password.Length > 0) 
             {
                 Watermark.Visibility = Visibility.Collapsed;
             }

@@ -49,7 +49,7 @@
         <Label Name="label2" Content="Введите пароль:" Width="300" Height="30" Margin="300,200,300,240" 
                HorizontalAlignment="Center" 
                VerticalAlignment="Center"/>
-        <PasswordBox  Template="{StaticResource box_Password}" x:Name="box_Password"
+        <PasswordBox  Template="{StaticResource box_Password}" x:Name="box_password"
                      Width="300" Height="40" 
                      Margin="300,230,300,210" Password="" HorizontalAlignment="Center" 
                      VerticalAlignment="Center"

@@ -12,6 +12,7 @@ namespace Project_Balakin
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.SqlClient;
     using System.Linq;
     using System.Windows;
 
@@ -31,33 +32,31 @@ namespace Project_Balakin
         {
             bool result = false;
 
-            using (var context = new DataBaseEntities())
+            using (SqlConnection connection = new SqlConnection("Server=DESKTOP-0JL8ELS\\BD;Database=TEST;Trusted_Connection=True;MultipleActiveResultSets=True;"))
             {
-                using (var dataBase = new DataBaseEntities())
+                string query = "INSERT INTO users (login, password) VALUES (@login, @password)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@login", login);
+                    command.Parameters.AddWithValue("@password", password);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
                     {
-                    try
-                    {
-                        // Создаем новый объект user
-                        var user = new users { login = login, password = password };
-
-                        // Добавляем его в таблицу users
-                        dataBase.users.Add(user);
-
-                        // Сохраняем изменения в базе данных
-                        dataBase.SaveChanges();
-
                         result = true;
-                            
-                        }
-                        catch (Exception ex)
-                        {
-                        // Если произошла ошибка при добавлении записи в базу, выводим ее в консоль
-                        Console.WriteLine("Error: " + ex.Message);
-                        }
-                        return result;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: User not inserted");
                     }
                 }
             }
+
+            return result;
         }
+    }
     }
 
