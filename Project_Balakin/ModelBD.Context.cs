@@ -58,5 +58,5 @@ namespace Project_Balakin
             return result;
         }
     }
-    }
+}
 
