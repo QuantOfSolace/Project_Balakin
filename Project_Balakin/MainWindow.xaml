@@ -93,7 +93,7 @@
                         <Setter Property="Source" 
                                     Value="Img/Кнопка меню неактивная.png"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Image.IsPressed, ElementName=UserPanel}"
+                            <DataTrigger Binding="{Binding TouchUp, ElementName=UserPanel}"
                                              Value="True">
                                 <Setter Property="Source" 
                                             Value="Img/Кнопка меню активная.png"/>

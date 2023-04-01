@@ -28,12 +28,12 @@ namespace Project_Balakin
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 0, 0, 1), DispatcherPriority.Normal, delegate
             {
 
-                if (GlobalVar.ThemeChanged == true)
+                if (GlobalVar.ThemeNegr == true)
                 {
                     label1.Foreground = (Brush)converter.ConvertFromString("White");
                     label2.Foreground = (Brush)converter.ConvertFromString("White");
                 }
-                if (GlobalVar.ThemeChanged == false)
+                if (GlobalVar.ThemeNegr == false)
                 {
                     label1.Foreground = (Brush)converter.ConvertFromString("Black");
                     label2.Foreground = (Brush)converter.ConvertFromString("Black");
@@ -47,8 +47,21 @@ namespace Project_Balakin
             {
                 if (box_Password.Password.Length > 0)
                 {
-                    /*FIXME*/
-                    ClassChangePage.frame1.Navigate(new Main());
+                    /*Burachenock_BaraguzinEntities db = new Burachenock_BaraguzinEntities();
+                    admins user1 = db.admins.FirstOrDefault(w => w.login.Equals(box_login.Text));
+                    if (user1.password.Equals(box_Password))
+                    {
+                        MessageBox.Show("Админ авторизовался");
+                        ClassFrame1.frame1.Navigate(new MainPage());
+                    }
+
+                    users user2 = db.users.FirstOrDefault(w => w.login.Equals(box_login.Text));
+                    if (user2.password.Equals(box_Password))
+                    {
+                    / FIXME /
+                    MessageBox.Show("Пользователь авторизовался");
+                    */
+                        ClassChangePage.frame1.Navigate(new Main());
                     
                 }
                 else MessageBox.Show("Введите пароль");

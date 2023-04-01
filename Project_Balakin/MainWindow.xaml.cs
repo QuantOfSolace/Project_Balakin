@@ -19,22 +19,24 @@ namespace Project_Balakin
 {
     public class GlobalVar
     {
-        public static bool ThemeChanged = false;
-        public static bool isAction1 = true;
+        public static bool ThemeNegr = false;
+        public static bool FlagToAction = true;
     }
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
+
             InitializeComponent();
             ClassChangePage.frame1 = Frame;
             ClassChangePage.frame1.Navigate(new Login());
-            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 0, 0, 1), DispatcherPriority.Normal, delegate
             {
-                label_time.Content = DateTime.Now.ToString("dd MMMM HH:mm");
+               label_time.Content = DateTime.Now.ToString("dd MMMM HH:mm");
             }, Dispatcher);
         }
 
@@ -67,17 +69,17 @@ namespace Project_Balakin
         {
             BrushConverter converter = new BrushConverter();
 
-            if (GlobalVar.isAction1)
+            if (GlobalVar.FlagToAction)
             {
                 Frame.Background = (Brush)converter.ConvertFromString("#FF1F1F1F");
-                GlobalVar.ThemeChanged = true;
+                GlobalVar.ThemeNegr = true;
             }
             else
             {
                 Frame.Background = (Brush)converter.ConvertFromString("White");
-                GlobalVar.ThemeChanged = false;
+                GlobalVar.ThemeNegr = false;
             }
-            GlobalVar.isAction1 = !GlobalVar.isAction1;  
+            GlobalVar.FlagToAction = !GlobalVar.FlagToAction;  
            
         }
 
