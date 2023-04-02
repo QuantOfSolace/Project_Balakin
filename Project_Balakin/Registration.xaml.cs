@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -80,6 +81,7 @@ namespace Project_Balakin
 
                                     using (var DataBase = new DataBaseEntities())
                                     {
+
                                         var isUserExists = DataBase.users.Any(u => u.login == login);
 
                                         if (isUserExists)
@@ -91,7 +93,8 @@ namespace Project_Balakin
                                             //var user = new users { login = login, password = password };
                                             //DataBase.users.Add(user);                                         ENTITY IS SHIT, DONT WORK
                                             //DataBase.SaveChanges();
-                                            DataBase.InsertUser(login, password, root); // Метод InsertUser лежит в модели DB
+                                            Registration registration = new Registration();
+                                            InsertUser(login, password, root); // Метод InsertUser лежит в модели DB
                                             MessageBox.Show("Пользователь зарегистрирован");
                                             ClassChangePage.frame1.Navigate(new Login());
                                         }
@@ -108,6 +111,46 @@ namespace Project_Balakin
             }
             else MessageBox.Show("Укажите логин");
         }
+
+        private static bool InsertUser(string login, string password, string root)
+        {
+            bool result = false;
+
+            using (SqlConnection connection = new SqlConnection("Server=DESKTOP-0JL8ELS\\BD;Database=TEST;Trusted_Connection=True;MultipleActiveResultSets=True;"))
+            {
+                string query = "INSERT INTO users (login, password, root) VALUES (@login, @password, @root)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+                    try
+                    {
+                        command.Parameters.AddWithValue("@login", login);
+                        command.Parameters.AddWithValue("@password", password);
+                        command.Parameters.AddWithValue("@root", root);
+
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            result = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error: User not inserted");
+                        }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            return result;
+        
+    }
 
         private void Back_click(object sender, RoutedEventArgs e)
         {
@@ -138,3 +181,4 @@ namespace Project_Balakin
         }
     }
 }
+

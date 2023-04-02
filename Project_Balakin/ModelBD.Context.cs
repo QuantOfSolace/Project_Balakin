@@ -12,10 +12,7 @@ namespace Project_Balakin
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.SqlClient;
-    using System.Linq;
-    using System.Windows;
-
+    
     public partial class DataBaseEntities : DbContext
     {
         public DataBaseEntities()
@@ -30,43 +27,6 @@ namespace Project_Balakin
     
         public virtual DbSet<admins> admins { get; set; }
         public virtual DbSet<users> users { get; set; }
-
-        public bool InsertUser(string login, string password, string root)
-        {
-            bool result = false;
-
-            using (SqlConnection connection = new SqlConnection("Server=DESKTOP-0JL8ELS\\BD;Database=TEST;Trusted_Connection=True;MultipleActiveResultSets=True;"))
-            {
-                string query = "INSERT INTO users (login, password, root) VALUES (@login, @password, @root)";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    try
-                    {
-                        command.Parameters.AddWithValue("@login", login);
-                        command.Parameters.AddWithValue("@password", password);
-                        command.Parameters.AddWithValue("@root", root);
-
-                        connection.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            result = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error: User not inserted");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);   
-                    }
-                }
-            }
-
-            return result;
-        }
     }
 }
+    

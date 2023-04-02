@@ -25,7 +25,8 @@
                  Margin="810,303,810,477"
                  BorderThickness="2px"
                  FontSize="18" 
-                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Padding="10,0,0,0">
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+                 Padding="10,0,0,0">
             <TextBox.Effect>
                 <DropShadowEffect/>
             </TextBox.Effect>
