@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Xml.Linq;
+
 
 namespace Project_Balakin
 {
@@ -76,6 +76,7 @@ namespace Project_Balakin
                                 {
                                     string login = box_login.Text;
                                     string password = box_password.Password;
+                                    string root = "Пользователь";
 
                                     using (var DataBase = new DataBaseEntities())
                                     {
@@ -90,7 +91,7 @@ namespace Project_Balakin
                                             //var user = new users { login = login, password = password };
                                             //DataBase.users.Add(user);                                         ENTITY IS SHIT, DONT WORK
                                             //DataBase.SaveChanges();
-                                            DataBase.InsertUser(login, password); // Метод InsertUser лежит в модели DB
+                                            DataBase.InsertUser(login, password, root); // Метод InsertUser лежит в модели DB
                                             MessageBox.Show("Пользователь зарегистрирован");
                                             ClassChangePage.frame1.Navigate(new Login());
                                         }

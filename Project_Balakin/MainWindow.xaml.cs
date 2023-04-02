@@ -55,16 +55,6 @@ namespace Project_Balakin
             MessageBox.Show("Оператор скоро прибудет, ожидайте.");
         }
 
-        private void UserPanel_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void UserPanel_GotFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ChangeTheme_Click(object sender, RoutedEventArgs e)
         {
             BrushConverter converter = new BrushConverter();

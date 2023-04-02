@@ -87,13 +87,13 @@
                 
 
             <Image Margin="20,0,0,0"  Name="UserPanel" VerticalAlignment="Center" HorizontalAlignment="Left" 
-                   Height="100" Width="100" GotFocus="UserPanel_GotFocus" LostFocus="UserPanel_LostFocus">
+                   Height="100" Width="100">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
                         <Setter Property="Source" 
                                     Value="Img/Кнопка меню неактивная.png"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding TouchUp, ElementName=UserPanel}"
+                            <DataTrigger Binding="{Binding IsMouseOver, ElementName=UserPanel}"
                                              Value="True">
                                 <Setter Property="Source" 
                                             Value="Img/Кнопка меню активная.png"/>

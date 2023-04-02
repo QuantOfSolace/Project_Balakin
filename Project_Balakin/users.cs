@@ -16,5 +16,6 @@ namespace Project_Balakin
     {
         public string login { get; set; }
         public string password { get; set; }
+        public string root { get; set; }
     }
 }

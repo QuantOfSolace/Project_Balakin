@@ -4,16 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище DataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "TEST.dbo.admins" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="admins">
           <Key>
             <PropertyRef Name="login" />
             <PropertyRef Name="password" />
+            <PropertyRef Name="root" />
           </Key>
           <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="root" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "TEST.dbo.users" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -21,26 +23,29 @@
           <Key>
             <PropertyRef Name="login" />
             <PropertyRef Name="password" />
+            <PropertyRef Name="root" />
           </Key>
           <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="root" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityContainer Name="Хранилище DataBaseModelContainer">
           <EntitySet Name="admins" EntityType="Self.admins" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [admins].[login] AS [login], 
-    [admins].[password] AS [password]
+    [admins].[password] AS [password], 
+    [admins].[root] AS [root]
     FROM [dbo].[admins] AS [admins]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="users" EntityType="Self.users" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [users].[login] AS [login], 
-    [users].[password] AS [password]
+    [users].[password] AS [password], 
+    [users].[root] AS [root]
     FROM [dbo].[users] AS [users]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -48,17 +53,21 @@
           <Key>
             <PropertyRef Name="login" />
             <PropertyRef Name="password" />
+            <PropertyRef Name="root" />
           </Key>
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="root" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="login" />
             <PropertyRef Name="password" />
+            <PropertyRef Name="root" />
           </Key>
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="root" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="DataBaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admins" EntityType="Self.admins" />
@@ -73,6 +82,7 @@
           <EntitySetMapping Name="admins">
             <EntityTypeMapping TypeName="DataBaseModel.admins">
               <MappingFragment StoreEntitySet="admins">
+                <ScalarProperty Name="root" ColumnName="root" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
@@ -81,6 +91,7 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="DataBaseModel.users">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="root" ColumnName="root" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>

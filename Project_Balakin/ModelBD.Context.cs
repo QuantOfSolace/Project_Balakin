@@ -22,35 +22,46 @@ namespace Project_Balakin
             : base("name=DataBaseEntities")
         {
         }
-
-
+    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
+    
         public virtual DbSet<admins> admins { get; set; }
         public virtual DbSet<users> users { get; set; }
 
-
-        public bool InsertUser(string login, string password)
+        public bool InsertUser(string login, string password, string root)
         {
             bool result = false;
 
             using (SqlConnection connection = new SqlConnection("Server=DESKTOP-0JL8ELS\\BD;Database=TEST;Trusted_Connection=True;MultipleActiveResultSets=True;"))
             {
-                string query = "INSERT INTO users (login, password) VALUES (@login, @password)";
+                string query = "INSERT INTO users (login, password, root) VALUES (@login, @password, @root)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@login", login);
-                    command.Parameters.AddWithValue("@password", password);
-
-                    connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
+                    try
                     {
-                        result = true;
+                        command.Parameters.AddWithValue("@login", login);
+                        command.Parameters.AddWithValue("@password", password);
+                        command.Parameters.AddWithValue("@root", root);
+
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            result = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error: User not inserted");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Error: User not inserted");
+                        MessageBox.Show(ex.Message);   
                     }
                 }
             }
@@ -59,4 +70,3 @@ namespace Project_Balakin
         }
     }
 }
-
