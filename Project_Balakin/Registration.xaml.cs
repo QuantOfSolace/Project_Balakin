@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -34,7 +35,8 @@ namespace Project_Balakin
             {
                 
             if (GlobalVar.ThemeNegr == true)
-                { 
+                {
+                
                 label1.Foreground = (Brush)converter.ConvertFromString("White");
                 label2.Foreground = (Brush)converter.ConvertFromString("White");
                 label3.Foreground = (Brush)converter.ConvertFromString("White");
@@ -42,6 +44,7 @@ namespace Project_Balakin
 
             if (GlobalVar.ThemeNegr == false)
                 {
+                
                 label1.Foreground = (Brush)converter.ConvertFromString("Black");
                 label2.Foreground = (Brush)converter.ConvertFromString("Black");
                 label3.Foreground = (Brush)converter.ConvertFromString("Black");
@@ -93,7 +96,6 @@ namespace Project_Balakin
                                             //var user = new users { login = login, password = password };
                                             //DataBase.users.Add(user);                                         ENTITY IS SHIT, DONT WORK
                                             //DataBase.SaveChanges();
-                                            Registration registration = new Registration();
                                             InsertUser(login, password, root); // Метод InsertUser лежит в модели DB
                                             MessageBox.Show("Пользователь зарегистрирован");
                                             ClassChangePage.frame1.Navigate(new Login());
@@ -149,8 +151,7 @@ namespace Project_Balakin
                 }
             }
             return result;
-        
-    }
+        }
 
         private void Back_click(object sender, RoutedEventArgs e)
         {

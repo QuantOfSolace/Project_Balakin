@@ -32,9 +32,11 @@
                      0,40,
                      100,40,
                      100,0" HorizontalAlignment="Right"/>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Image Name="MinButton" Height="20" Width="20" Margin="5,5,10,5" 
                        MouseDown="MinButton_MouseDown">
+                    
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" 
@@ -74,56 +76,40 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Background="Orange">
-            <Button Name="ChangeTheme" Click="ChangeTheme_Click" Width="300px" Height="50px" VerticalAlignment="Center"  
-                    HorizontalAlignment="Right" Margin="0,0,50,0" 
-                    Content="Cменить тему"
-                    FontSize="22">
+            <Button Name="ChangeTheme" Click="ChangeTheme_Click" Width="300px" Height="50px" 
+                    VerticalAlignment="Center"  HorizontalAlignment="Right" Margin="0,0,50,0" 
+                    Content="Cменить тему" FontSize="22" FontFamily="Yu Gothic UI Semibold">
+                
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="20"/>
                     </Style>
                 </Button.Resources>
             </Button>
-                
-
-            <Image Margin="20,0,0,0"  Name="UserPanel" VerticalAlignment="Center" HorizontalAlignment="Left" 
-                   Height="100" Width="100">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" 
-                                    Value="Img/Кнопка меню неактивная.png"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsMouseOver, ElementName=UserPanel}"
-                                             Value="True">
-                                <Setter Property="Source" 
-                                            Value="Img/Кнопка меню активная.png"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-                <Image.Effect>
-                    <BlurEffect Radius="1"/>
-                </Image.Effect>
-            </Image>
         </Grid>
         <Grid Grid.Row="2">
-            <Frame x:Name="Frame" NavigationUIVisibility="Hidden"/>
+            <Frame x:Name="Frame" NavigationUIVisibility="Hidden" Background="Transparent">
+            </Frame>
         </Grid>
         <Grid Grid.Row="3" Background="Gray">
             <Button Width="300px" Height="50px" VerticalAlignment="Center"  
                     HorizontalAlignment="Left" Margin="50,0,0,0" 
                     Content="Вызов оператора" Click="Button_Click"
-                    FontSize="22">
+                    FontSize="22" FontFamily="Yu Gothic UI Semibold">
+                
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="20"/>
                     </Style>
                 </Button.Resources>
             </Button>
+            <Frame Name="Bebra" Background="#FF1F1F1F" NavigationUIVisibility="Hidden" Visibility="Hidden" ></Frame>
             <Label Name="label_time" Content="Дата" HorizontalAlignment="Right" 
-                   VerticalAlignment="Center" Height="50px" 
-                   Width="200px" Margin="0,0,50,0" FontSize="22" 
-                   Foreground="Black" Background="White">
+                   VerticalAlignment="Center" Height="60px" 
+                   Width="220px" Margin="0,0,50,0" FontSize="22" 
+                   Foreground="Black" Background="White"
+                   FontFamily="Yu Gothic UI Semibold">
+                
                 <Label.Resources>
                     <Style TargetType="Label">
                         <Setter Property="OverridesDefaultStyle" Value="True"/>

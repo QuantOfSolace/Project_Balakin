@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,14 +17,14 @@ using System.Windows.Shapes;
 namespace Project_Balakin
 {
     /// <summary>
-    /// Логика взаимодействия для Main.xaml
+    /// Логика взаимодействия для AdminPage.xaml
     /// </summary>
-    public partial class Main : Page
+    public partial class AdminPage : Page
     {
-        public Main()
+        public AdminPage()
         {
             InitializeComponent();
-
+            
             myLabel.Content = "Уровень доступа: " + GetUserNameByLogin(GlobalVar.PanelLogin);
         }
 
@@ -33,7 +33,7 @@ namespace Project_Balakin
         private string GetUserNameByLogin(string login)
         {
             // Получить объект пользователя из БД по login:
-            var user = dataBase.users.FirstOrDefault(u => u.login == login);
+            var user = dataBase.admins.FirstOrDefault(u => u.login == login);
 
             // Если у пользователя есть имя, то вернуть его:
             if (user != null && !string.IsNullOrEmpty(user.root))
@@ -43,11 +43,6 @@ namespace Project_Balakin
 
             // В противном случае вернуть пустую строку:
             return string.Empty;
-        }
-
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            ClassChangePage.frame1.Navigate(new Login());
         }
     }
 }

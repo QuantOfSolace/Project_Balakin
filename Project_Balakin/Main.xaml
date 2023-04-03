@@ -11,10 +11,81 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="600"/>
-            <RowDefinition Height="170"/>
+            <RowDefinition Height="770"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Name="Panel">
+        <Grid Grid.Row="0" Name="Panel" Background="Black">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+
+                <Button Background="Transparent" BorderBrush="White" BorderThickness="0,0,1,0">
+                    
+                    <StackPanel Orientation="Horizontal" Width="350px" Background="Transparent">
+                        
+                        <Image Margin="20,0,0,0"  Name="UserPanel" VerticalAlignment="Center" 
+                               HorizontalAlignment="Left" Height="50px" Width="50px">
+                            
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" 
+                                    Value="Img/Кнопка меню неактивная.png"/>
+                                </Style>
+                            </Image.Style>
+                            <Image.Effect>
+                                <BlurEffect Radius="1"/>
+                            </Image.Effect>
+                        </Image>
+                        <TextBlock Height="30px" Width="80px" VerticalAlignment="Center" 
+                                   Margin="90,1,0,0" Text="Меню" 
+                                   Foreground="CadetBlue" FontSize="20" Panel.ZIndex="1" 
+                                   FontFamily="Yu Gothic UI Semibold">
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Label x:Name="myLabel" Content="UserRoot"  Foreground="CadetBlue" 
+                       VerticalAlignment="Center" Width="340px" Height="50px" 
+                       FontSize="18" HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center" FontFamily="Yu Gothic UI Semibold"
+                       BorderBrush="White" BorderThickness="1,0,0,0" Margin="0.3,0,0,0">
+                </Label>
+                <Button x:Name="ExitButton" Height="50px" Width="300px" Click="ExitButton_Click" 
+                        Content="Выход из учётной записи" Background="Transparent" 
+                        Foreground="CadetBlue" FontFamily="Yu Gothic UI Semibold" FontSize="18"
+                        BorderBrush="White" BorderThickness="1,0,0,0" Margin="0.1,0,0,0">
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Name="MainPart" Height="500px" Width="1000px">
+            <Border x:Name="BackGround" BorderThickness="1" HorizontalAlignment="Center"
+                    CornerRadius="50" Background="WhiteSmoke" Opacity="0.5"
+                    Height="500px" Width="1000px" VerticalAlignment="Center">
+                
+                <Border x:Name="BackGround_Child" BorderThickness="1" 
+                        HorizontalAlignment="Center" Opacity="0.3"
+                        CornerRadius="50" Background="WhiteSmoke" 
+                        Height="470px" Width="970px" VerticalAlignment="Center">
+
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="14" ShadowDepth="0"/>
+                    </Border.Effect>
+                </Border>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="14" ShadowDepth="0"/>
+                </Border.Effect>
+            </Border>
+            <Border x:Name="StatusSignal" Background="Transparent" Width="270px"
+                    Height="270px" Opacity="2" VerticalAlignment="Center"
+                    HorizontalAlignment="Left" Margin="60,0,0,0"
+                    CornerRadius="20" BorderThickness="1" BorderBrush="Black">
+            </Border>
+
+            <TextBlock Name="StatusSignalText"  VerticalAlignment="Top" 
+                       HorizontalAlignment="Center" Text="Статус" Foreground="Black"
+                       FontFamily="Yu Gothic UI Semibold" FontSize="20" Margin="0,10,0,0">
+            </TextBlock>
+            <TextBlock>
+                
+            </TextBlock>
         </Grid>
     </Grid>
 </Page>

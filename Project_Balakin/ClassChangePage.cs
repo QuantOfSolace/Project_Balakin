@@ -11,4 +11,10 @@ namespace Project_Balakin
     {
         static public Frame frame1 = new Frame();
     }
+    public class GlobalVar
+    {
+        public static string PanelLogin;
+        public static bool ThemeNegr = false;
+        public static bool FlagToAction = true;
+    }
 }

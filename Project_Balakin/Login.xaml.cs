@@ -25,10 +25,11 @@ namespace Project_Balakin
         public Login()
         {
             InitializeComponent();
+
             BrushConverter converter = new BrushConverter();
+
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 0, 0, 1), DispatcherPriority.Normal, delegate
             {
-
                 if (GlobalVar.ThemeNegr == true)
                 {
                     label1.Foreground = (Brush)converter.ConvertFromString("White");
@@ -39,7 +40,9 @@ namespace Project_Balakin
                     label1.Foreground = (Brush)converter.ConvertFromString("Black");
                     label2.Foreground = (Brush)converter.ConvertFromString("Black");
                 }
-            }, Dispatcher);
+            }
+            , Dispatcher);
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
 
@@ -53,6 +56,8 @@ namespace Project_Balakin
                         string login = box_login.Text;
                         string password = box_password.Password;
 
+                        GlobalVar.PanelLogin = login;
+
                         var isUserExistsLoginAdm = DataBase.admins.Any(u => u.login == login);
                         var isUserExistsPassAdm = DataBase.admins.Any(u => u.password == password);
                         var isUserExistsLogin = DataBase.users.Any(u => u.login == login);
@@ -60,7 +65,7 @@ namespace Project_Balakin
                         if(isUserExistsLoginAdm && isUserExistsPassAdm)
                         {
                             MessageBox.Show("Админ авторизовался");
-                            ClassChangePage.frame1.Navigate(new Main());
+                            ClassChangePage.frame1.Navigate(new AdminPage());
                         }
                         else
                         { 
@@ -69,10 +74,7 @@ namespace Project_Balakin
                                 MessageBox.Show("Пользователь авторизовался");
                                 ClassChangePage.frame1.Navigate(new Main());
                             }
-                            else
-                            {
-                                MessageBox.Show("Неверный логин или пароль");
-                            }
+                            else MessageBox.Show("Неверный логин или пароль");
                         }
                     }
                 }
