@@ -47,7 +47,7 @@ namespace Project_Balakin
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            ClassChangePage.frame1.Navigate(typeof(AdminPage));
+            ClassChangePage.frame1.Navigate(new Login());
         }
     }
 }
