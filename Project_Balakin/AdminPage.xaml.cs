@@ -44,5 +44,10 @@ namespace Project_Balakin
             // В противном случае вернуть пустую строку:
             return string.Empty;
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClassChangePage.frame1.Navigate(typeof(AdminPage));
+        }
     }
 }
