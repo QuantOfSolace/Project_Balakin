@@ -52,7 +52,7 @@ namespace Project_Balakin
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ClassChangePage.frame1.Navigate(new CheckBox());
+            ClassChangePage.frame1.Navigate(new LastEntry());
         }
     }
 }
