@@ -42,7 +42,7 @@ namespace Project_Balakin
             }
 
             // В противном случае вернуть пустую строку:
-            return string.Empty;
+            else return string.Empty;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
