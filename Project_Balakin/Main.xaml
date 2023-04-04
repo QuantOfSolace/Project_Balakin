@@ -16,30 +16,32 @@
         <Grid Grid.Row="0" Name="Panel" Background="Black">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
 
-                <Button Background="Transparent" BorderBrush="White" BorderThickness="0,0,1,0">
-                    
-                    <StackPanel Orientation="Horizontal" Width="350px" Background="Transparent">
-                        
-                        <Image Margin="20,0,0,0"  Name="UserPanel" VerticalAlignment="Center" 
+                <StackPanel Width="350" Height="50">
+                    <ToggleButton x:Name="menuButton" Background="Transparent" BorderBrush="White" 
+                                  BorderThickness="0,0,1,0" Width="350" Height="50">
+                        <StackPanel Orientation="Horizontal" Width="350px" Background="Transparent">
+
+                            <Image Margin="20,0,0,0"  Name="UserPanel" VerticalAlignment="Center" 
                                HorizontalAlignment="Left" Height="50px" Width="50px">
-                            
-                            <Image.Style>
-                                <Style TargetType="{x:Type Image}">
-                                    <Setter Property="Source" 
+
+                                <Image.Style>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Source" 
                                     Value="Img/Кнопка меню неактивная.png"/>
-                                </Style>
-                            </Image.Style>
-                            <Image.Effect>
-                                <BlurEffect Radius="1"/>
-                            </Image.Effect>
-                        </Image>
-                        <TextBlock Height="30px" Width="80px" VerticalAlignment="Center" 
-                                   Margin="90,1,0,0" Text="Меню" 
+                                    </Style>
+                                </Image.Style>
+                                <Image.Effect>
+                                    <BlurEffect Radius="1"/>
+                                </Image.Effect>
+                            </Image>
+                            <TextBlock Height="30px" Width="80px" VerticalAlignment="Center" 
+                                   Margin="76,1,0,0" Text="Меню" 
                                    Foreground="CadetBlue" FontSize="20" Panel.ZIndex="1" 
                                    FontFamily="Yu Gothic UI Semibold">
-                        </TextBlock>
-                    </StackPanel>
-                </Button>
+                            </TextBlock>
+                        </StackPanel>
+                    </ToggleButton>
+                </StackPanel>
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <Label x:Name="myLabel" Content="UserRoot"  Foreground="CadetBlue" 
@@ -56,6 +58,23 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Name="MainPart" Height="500px" Width="1000px">
+            <Popup PlacementTarget="{Binding ElementName=menuButton}" 
+                   IsOpen="{Binding ElementName=menuButton, Path=IsChecked}"
+                   Width="350px" Height="180px">
+                <StackPanel>
+                    <Button Width="350px" Height="60px"  Background="Black" Click="Button_Click"
+                            Foreground="CadetBlue" FontFamily="Yu Gothic UI Semibold" FontSize="18">
+                        <TextBlock TextAlignment="Center"> Посмотреть список
+                                            <LineBreak/> Последних вошедших
+                        </TextBlock>
+                    </Button>
+                    <Button Width="350px" Height="60px" Content="ToBeComplete" Background="Black"
+                            Foreground="CadetBlue" FontFamily="Yu Gothic UI Semibold" FontSize="18"/>
+                    <Button Width="350px" Height="60px" Content="ToBeComplete" Background="Black" 
+                            Foreground="CadetBlue" FontFamily="Yu Gothic UI Semibold" FontSize="18"/>
+                </StackPanel>
+            </Popup>
+
             <Border x:Name="BackGround" BorderThickness="1" HorizontalAlignment="Center"
                     CornerRadius="50" Background="WhiteSmoke" Opacity="0.5"
                     Height="500px" Width="1000px" VerticalAlignment="Center">
