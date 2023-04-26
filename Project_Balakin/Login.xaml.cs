@@ -62,6 +62,7 @@ namespace Project_Balakin
                         var isUserExistsPassAdm = DataBase.admins.Any(u => u.password == password);
                         var isUserExistsLogin = DataBase.users.Any(u => u.login == login);
                         var isUserExistsPass = DataBase.users.Any(u => u.password == password);
+
                         if(isUserExistsLoginAdm && isUserExistsPassAdm)
                         {
                             MessageBox.Show("Админ авторизовался");

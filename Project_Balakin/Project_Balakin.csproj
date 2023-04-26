@@ -71,7 +71,25 @@
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="admins.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LastEntry.xaml.cs">
+      <DependentUpon>LastEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="ModelBD.Context.cs">
       <AutoGen>True</AutoGen>
@@ -92,9 +110,13 @@
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Compile Include="users.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Page Include="AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LastEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +174,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelBD.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
     <None Include="ModelBD.edmx.diagram">
       <DependentUpon>ModelBD.edmx</DependentUpon>
     </None>
@@ -179,6 +208,16 @@
     <Resource Include="Img\Кнопка скрытия активная.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="ModelBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelBD.Context.cs</LastGenOutput>

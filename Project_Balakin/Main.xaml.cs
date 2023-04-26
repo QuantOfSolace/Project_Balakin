@@ -49,5 +49,10 @@ namespace Project_Balakin
         {
             ClassChangePage.frame1.Navigate(new Login());
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ClassChangePage.frame1.Navigate(new LastEntry());
+        }
     }
 }
